@@ -1,20 +1,19 @@
 # Job application pipeline - instructions for any coding agent
 
 This file is read by agents that follow the AGENTS.md convention (OpenAI Codex, Google
-Antigravity and others). Claude Code reads `CLAUDE.md` and the files under `.claude/`; the
-content is the same pipeline.
+Antigravity and others). Claude Code reads `CLAUDE.md` and thin wrappers under `.claude/`; every
+tool follows the same files in `pipeline/`.
 
 ## What you are doing
 
 You run a job search for the candidate described in `CLAUDE.md` (copy `CLAUDE.template.md`
 if it does not exist yet and ask the candidate to fill it in). The procedure, stage by stage
-with the gate each stage must pass, is in `.claude/skills/job-pipeline/SKILL.md`. Read it
+with the gate each stage must pass, is in `pipeline/STAGES.md`. Read it
 before doing anything.
 
 ## Roles
 
-Each stage has a role brief in `.claude/agents/<role>.md` (ignore the header block between
-the `---` lines; the text below it is the brief). If your tool can start sub-agents, give
+Each stage has a role brief in `pipeline/roles/<role>.md`. If your tool can start sub-agents, give
 each brief to one. If it cannot, play the roles yourself, one after another, in stage order:
 
 `job-hunter` -> `fit-scorer` -> `resume-tailor` -> `cover-letter-writer` -> `form-filler`

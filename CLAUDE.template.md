@@ -1,7 +1,7 @@
 # Job-application assistant for <Your Name>
 
 Loaded at the start of every session. Standing instructions and facts live here; the live
-queue lives in `RUN_STATE.md`. The procedure is `.claude/skills/job-pipeline/SKILL.md`.
+queue lives in `RUN_STATE.md`. The procedure is `pipeline/STAGES.md`.
 
 ## Rules I have set
 

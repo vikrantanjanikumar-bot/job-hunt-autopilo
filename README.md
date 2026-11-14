@@ -1,7 +1,8 @@
 # Job hunt autopilot
 
-A working setup that lets an AI coding agent — [Claude Code](https://claude.com/claude-code),
-OpenAI Codex or Google Antigravity — run a job search end to end: find postings, score them against your profile, build a tailored résumé and cover
+A working setup that lets an AI coding agent run a job search end to end. **Built for and
+used with [Claude Code](https://claude.com/claude-code); experimental support for OpenAI
+Codex and Google Antigravity.** What it does: find postings, score them against your profile, build a tailored résumé and cover
 letter, fill the employer's form, check it, submit, and watch your mailbox for replies.
 
 It was built and used on a real search. Everything personal has been removed; you add your
@@ -25,17 +26,18 @@ own facts in two files.
 | 11 | Learn | `outcome-analyst` | which sources and résumé versions get replies |
 | 12 | Profile refresh (weekly) | `profile-refresher` | job-board profiles kept current and "recently active" |
 
-The full rules are in [`.claude/skills/job-pipeline/SKILL.md`](.claude/skills/job-pipeline/SKILL.md).
+The full rules are in [`pipeline/STAGES.md`](pipeline/STAGES.md).
 
 ## Which tools it works with
 
 | Tool | What it reads | Status |
 |---|---|---|
-| Claude Code | `CLAUDE.md`, `.claude/skills/`, `.claude/agents/` | built and used here on a real search |
-| OpenAI Codex | `AGENTS.md` (points to the same stage and role files) | instructions provided, not yet tested by the authors |
-| Google Antigravity | `AGENTS.md`, `.agent/rules/`, `.agent/workflows/job-pipeline.md` (run with `/job-pipeline`) | instructions provided, not yet tested by the authors |
+| Claude Code | `CLAUDE.md`, `.claude/skills/`, `.claude/agents/` | **supported** - built and used on a real search |
+| OpenAI Codex | `AGENTS.md` | **experimental** - written, not yet run by the authors |
+| Google Antigravity | `AGENTS.md`, `.agent/rules/`, `.agent/workflows/job-pipeline.md` (run with `/job-pipeline`) | **experimental** - written, not yet run by the authors |
 
-The Python tools are the same for all three. Where a tool has no sub-agents, browser, sheet
+All three follow the same tool-neutral files: `pipeline/STAGES.md` (the stages and gates)
+and `pipeline/roles/` (one brief per bot). The Python tools are the same for all three. Where a tool has no sub-agents, browser, sheet
 or mail connector, `AGENTS.md` says what to do instead (play the roles in turn, write a fill
 sheet for the candidate, keep `tracker.csv`, paste replies). Reports and fixes from Codex and
 Antigravity users are welcome as issues.
@@ -78,10 +80,11 @@ Antigravity users are welcome as issues.
 ## Files
 
 ```
+pipeline/STAGES.md                     the pipeline: stages, gates, commands (all tools)
+pipeline/roles/*.md                    one brief per bot (all tools)
 AGENTS.md                              entry point for Codex, Antigravity and other agents
 .agent/                                Antigravity rules and workflow
-.claude/skills/job-pipeline/SKILL.md   the pipeline: stages, gates, commands
-.claude/agents/*.md                    one bot per stage
+.claude/                               Claude Code skill and agents (thin wrappers)
 tools/discover.py                      search and de-duplicate (JobSpy)
 tools/linkedin_jd.py                   read public LinkedIn job descriptions
 tools/resume.py                        build 2-page résumé variants (PDF)
