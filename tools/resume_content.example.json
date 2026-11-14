@@ -1,0 +1,36 @@
+{
+ "name": "Your Name",
+ "contact": "City, Country | +00 00000 00000 | you@example.com | linkedin.com/in/you",
+ "variants": {
+  "controls": {
+   "file": "Your_Name_Resume_Project_Controls",
+   "headline": "Project Controls and Planning | 10+ years",
+   "profile": "Three or four sentences written for planning and controls roles.",
+   "skills": ["Project planning and scheduling", "Cost control", "Risk management", "Status reporting"]
+  },
+  "npi": {
+   "file": "Your_Name_Resume_Programme_Management",
+   "headline": "Programme Management | New Product Introduction",
+   "profile": "Three or four sentences written for programme and product roles.",
+   "skills": ["Programme management", "Design reviews", "Supplier development", "Stakeholder management"]
+  }
+ },
+ "tools": "MS Project, Power BI, Excel, ERP",
+ "employer": "Employer Name, City | Month Year - present",
+ "title": "Your official title",
+ "role_summary": "Two sentences on the scope of your role.",
+ "programmes": [
+  {
+   "head": "Programme or project name | Customer | Years",
+   "bullets": [
+    "What you did and the measurable result.",
+    "A second, different kind of contribution."
+   ],
+   "order": {"controls": [1, 0]}
+  }
+ ],
+ "education": ["Degree, Institution, Years, Grade"],
+ "certifications": ["Certificate, Issuer, Year"],
+ "awards": ["Award, Year"],
+ "languages": "English, ..."
+}

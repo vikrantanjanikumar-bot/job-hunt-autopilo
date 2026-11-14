@@ -1,0 +1,11 @@
+uploads/
+discovery/
+interviews/
+CLAUDE.md
+RUN_STATE.md
+tools/resume_content.json
+tools/discover_config.json
+tools/tracker_index.csv
+*.pdf
+__pycache__/
+.claude/settings.local.json
