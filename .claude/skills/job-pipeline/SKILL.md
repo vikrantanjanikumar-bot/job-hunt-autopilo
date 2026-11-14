@@ -5,7 +5,7 @@ description: End-to-end job application pipeline - hunt, categorise, log to the 
 
 # Job application pipeline
 
-Twelve stages (0-11). Each has one bot (agent in `.claude/agents/`), one input, one output and a
+Thirteen stages (0-12). Each has one bot (agent in `.claude/agents/`), one input, one output and a
 gate that must pass before the next stage. The candidate's facts and standing rules are in
 `CLAUDE.md`; the live queue is in `RUN_STATE.md`. Never invent a fact: what is not in
 `CLAUDE.md` or the resume is asked once and then written into `CLAUDE.md`.
@@ -24,6 +24,7 @@ gate that must pass before the next stage. The candidate's facts and standing ru
 | 9 | Monitor | `email-monitor` | replies classified: acknowledgement, rejection, assessment, recruiter, interview; tracker updated; follow-up drafts | a person's reply is told to the candidate first |
 | 10 | Interview prep | main session (`interview-prep` skill) | one-file pack: company brief, likely questions, answers as stories, salary line | built the day an interview or recruiter call is confirmed |
 | 11 | Learn | `outcome-analyst` | weekly: replies per source, per resume variant, per role family; what to search more or drop | changes to search words or scoring are proposed, not applied silently |
+| 12 | Profile refresh (weekly) | `profile-refresher` | job-board and network profiles match the approved text; current resume uploaded; one activity edit per site | every changed section read back; nothing outside approved wording |
 
 ## Tracker stage values (column L)
 
@@ -53,5 +54,6 @@ python -I tools\cover_letter.py <letters.json>              # 1 page each
 ## Running it
 
 Whole pipeline: stages 1-4 in parallel bots (no browser), then stages 5-8 one job at a time
-in fit order (deadlines first), then stage 9. A single stage can be run alone by naming it.
+in fit order (deadlines first), then stage 9. Stage 11 and stage 12 run once a week;
+stage 12 needs the browser, so not while a form is being filled. A single stage can be run alone by naming it.
 After a run: append to `RUN_STATE.md`, add new rows to `tools/tracker_index.csv`, commit.

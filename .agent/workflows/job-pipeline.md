@@ -11,3 +11,4 @@ description: Run the job application pipeline - hunt, score, tailor documents, f
 7. Submit only after the review passes and the consent rule in `CLAUDE.md` allows it. Record the confirmation text and date in the tracker.
 8. Monitor replies: follow `.claude/agents/email-monitor.md`. Tell the candidate about any reply from a person first.
 9. Report: what was submitted with its confirmation, what is waiting on the candidate, what was skipped and why.
+10. Once a week: refresh job-board profiles by following `.claude/agents/profile-refresher.md`.

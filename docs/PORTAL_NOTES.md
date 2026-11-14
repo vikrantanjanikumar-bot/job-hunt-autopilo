@@ -48,6 +48,16 @@ What the common application systems do, learned the slow way. Add your own.
 - "Easy Apply" needs a résumé uploaded through the system file picker once.
 - "Apply on company website" opens the employer's page in a new tab; use that for tailored documents.
 
+## Profile edits (stage 12)
+
+- Boards rank and filter by recent activity; one true edit a week is enough.
+- Skill boxes usually accept only entries picked from their suggestion list (type, wait, click
+  the suggestion; Enter does nothing) and may cap the total characters.
+- Professional networks: add skills one at a time; a duplicate shows a small notice, not an error.
+- Some profile pages take a resume through a hidden file field; others open the system file
+  picker, which only the candidate can use.
+- Leave anything the candidate wrote that is fuller than the approved text.
+
 ## Things only the candidate does
 
 Sign-ins, account creation, one-time codes, CAPTCHAs, e-signatures, and consents unless the

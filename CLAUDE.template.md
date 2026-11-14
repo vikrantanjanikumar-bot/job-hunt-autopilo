@@ -32,6 +32,7 @@ queue lives in `RUN_STATE.md`. The procedure is `.claude/skills/job-pipeline/SKI
 - Tracker: sheet id, tab name, header row, columns A:O = Job ID, Priority, Employer, Role,
   Location, Work arrangement, Requisition, Source verification, Why relevant, Gaps or
   questions, Next action, Stage, Your decision, Resume version, Submitted on.
+- Approved profile text for job boards (headline, summary, key skills per site): `PROFILE_TEXT.md`.
 - `tools/tracker_index.csv`: `JobID|Employer|Role`, one line per tracker row.
 
 ## Site notes that save time

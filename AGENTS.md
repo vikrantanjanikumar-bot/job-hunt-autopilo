@@ -19,7 +19,7 @@ each brief to one. If it cannot, play the roles yourself, one after another, in 
 
 `job-hunter` -> `fit-scorer` -> `resume-tailor` -> `cover-letter-writer` -> `form-filler`
 -> `application-reviewer` -> (submit and update the tracker) -> `email-monitor` ->
-`outcome-analyst`.
+`outcome-analyst`. Once a week also run `profile-refresher`.
 
 Supporting notes: `docs/FIT_SCORING.md` (match score), `docs/PORTAL_NOTES.md` (job portals).
 

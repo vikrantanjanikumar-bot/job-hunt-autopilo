@@ -23,6 +23,7 @@ own facts in two files.
 | 9 | Monitor | `email-monitor` | replies classified, deadlines flagged, follow-ups drafted |
 | 10 | Interview prep | main session | a one-file pack per interview |
 | 11 | Learn | `outcome-analyst` | which sources and résumé versions get replies |
+| 12 | Profile refresh (weekly) | `profile-refresher` | job-board profiles kept current and "recently active" |
 
 The full rules are in [`.claude/skills/job-pipeline/SKILL.md`](.claude/skills/job-pipeline/SKILL.md).
 
