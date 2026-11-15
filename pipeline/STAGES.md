@@ -65,3 +65,11 @@ Three form runs were lost to the usage limit and expired sign-ins. These rules p
 - **Review by script.** `application-reviewer` saves the review page text and runs `python -I tools/review_check.py <JobID> discovery/review/<JobID>.txt`; the model reads only what the script cannot judge.
 - **Models.** `job-hunter` and `email-monitor` run on the cheaper model (set in their files). Scoring, letters and review stay on the strongest. `form-filler` on the cheaper model is a trial: pass `model: sonnet` for one form and compare the reviewer's result before making it the default.
 - Facts live twice: prose in `CLAUDE.md`, machine copy in `tools/form_facts.json`. A new answer from the candidate goes into both.
+
+## Watching the bots' token use (15 Nov 2026)
+
+- Every bot run gets one line in `tools/bot_usage.csv` (date|bot|job|tokens|tool_uses|minutes|result|note), taken from the run's completion notice. Result is `useful` (its output was used) or `wasted`.
+- Budgets per run: form-filler 150,000 tokens for a multi-page portal, 60,000 for a one-page form; reviewer 40,000; hunter, scorer, resume, letter, mail bots 50,000 each. A run over budget, or any wasted run, is told to the candidate in the same report with the cause and the fix; the fix goes into the bot's brief or the portal file before that bot runs again.
+- Two wasted runs in a row on the same job: stop using a bot for that job and do it in the main session.
+- The weekly `outcome-analyst` report adds tokens per submitted application from this file.
+- A bot only has the tools named in its file: a connector (Gmail, Sheets) must be listed there, or the main session does that stage (email-monitor had none on 15 Nov and wasted a run).

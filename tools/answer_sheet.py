@@ -49,7 +49,7 @@ def main():
     out.append('- Cover letter: ' + (os.path.basename(cover) if cover else 'none for this job'))
     out += ['- Remove any older resume or letter the portal has kept.', '',
             '## Portal notes', 'Read the %s section of `docs/PORTAL_NOTES.md` and the '
-            '"All portals" list there. Nothing else.', '',
+            '"All portals" list there. Nothing else.' % portal, '',
             '## Fields']
     out += ['- %s: %s' % kv for kv in fields.items()]
     out += ['', '## Standard answers']
