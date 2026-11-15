@@ -18,8 +18,8 @@ own facts in two files.
 | 3 | Log | main session | one row per posting in your tracker sheet |
 | 4 | Verify and match score | `fit-scorer` | posting confirmed open and genuine; fit out of 100 with honest blockers |
 | 5 | Documents | `resume-tailor`, `cover-letter-writer` | 2-page résumé and 1-page letter per job |
-| 6 | Fill | `form-filler` | the portal form filled, stopped before submit |
-| 7 | Review | `application-reviewer` | every field compared with your facts |
+| 6 | Fill | `form-filler` | a one-page answer sheet per job, then the portal form filled and saved page by page, stopped before submit |
+| 7 | Review | `application-reviewer` | review page text compared with the sheet by script, then a check by eye of the screening answers |
 | 8 | Apply and update | main session | submitted, with the confirmation text in the tracker |
 | 9 | Monitor | `email-monitor` | replies classified, deadlines flagged, follow-ups drafted |
 | 10 | Interview prep | main session | a one-file pack per interview |
@@ -57,11 +57,24 @@ Antigravity users are welcome as issues.
    résumé there: up to three variants (headline, profile, skills) over one shared history.
    Build them: `python -I tools/resume.py tools/resume_content.json uploads _<date>` — each
    must come out at 2 pages.
-3. Copy `tools/discover_config.example.json` to `tools/discover_config.json` and set your
+3. Copy `tools/form_facts.example.json` to `tools/form_facts.json` and fill it in: the machine copy of your form facts. It feeds the per-job answer sheet and the review check. When you give a new answer, record it here and in `CLAUDE.md`.
+4. Copy `tools/discover_config.example.json` to `tools/discover_config.json` and set your
    search terms, locations and the words that raise or lower a posting's reading order.
-4. Create a tracker sheet with the columns listed in `CLAUDE.template.md`, and an empty
+5. Create a tracker sheet with the columns listed in `CLAUDE.template.md`, and an empty
    `tools/tracker_index.csv` (one line per job: `J001|Employer|Role`).
-5. Open the folder in your agent tool and say: **run the pipeline** (Antigravity: `/job-pipeline`).
+6. Open the folder in your agent tool and say: **run the pipeline** (Antigravity: `/job-pipeline`).
+
+## Keeping token use down
+
+Forms are the expensive stage. These rules came from runs that were cut off by a usage limit:
+
+- **Usage gate:** start a form only when the current usage window has room (the rule uses 60% used as the limit). Do the no-browser stages first.
+- **Answer sheet:** `tools/answer_sheet.py` builds one small sheet per job from `tools/form_facts.json`; the form bot reads that, not your whole facts file.
+- **Scripted review:** `tools/review_check.py` compares the review page text with the sheet and prints only what is missing, forbidden or worth a look.
+- **Fresh bot, never resumed:** resuming a cut-off bot replays its whole history. Save each page as it is verified so a break loses one page at most.
+- **Per-portal notes:** a bot reads only its portal's section of the portal notes.
+- **Log and budgets:** record every bot run in `tools/bot_usage.csv` and compare with the budgets in `pipeline/STAGES.md`.
+- **Cheaper model for mechanical bots:** the hunter and the mail monitor run on a smaller model; scoring, letters and review stay on the strongest.
 
 ## Rules built into it
 
@@ -90,6 +103,9 @@ tools/linkedin_jd.py                   read public LinkedIn job descriptions
 tools/resume.py                        build 2-page résumé variants (PDF)
 tools/tailor_resume.py                 per-job résumé from approved wording
 tools/cover_letter.py                  one-page cover letters (PDF)
+tools/answer_sheet.py                  per-job answer sheet for the form bot
+tools/review_check.py                  scripted comparison of the review page with the sheet
+tools/form_facts.example.json          machine copy of your form facts
 docs/FIT_SCORING.md                    how the match score is built
 docs/PORTAL_NOTES.md                   what each kind of job portal does
 CLAUDE.template.md                     your facts and standing rules
