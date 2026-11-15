@@ -21,3 +21,5 @@ For each site the candidate is already signed in to (job boards and professional
 
 Never type a password or one-time code. A site that is signed out is reported, not signed
 in to. Report per site: what was there, what changed, what was verified, what needs the candidate.
+
+Portal notes for profile pages: `docs/PORTAL_NOTES.md` (read only that file).

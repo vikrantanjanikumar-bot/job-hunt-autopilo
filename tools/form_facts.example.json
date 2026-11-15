@@ -1,0 +1,51 @@
+{
+  "_note": "Copy to tools/form_facts.json and fill in. Machine copy of 'Facts for forms' in CLAUDE.md: change both together. Only facts the candidate has confirmed.",
+  "fields": {
+    "Given name": "<given name>",
+    "Family name": "<family name>",
+    "Email": "<email>",
+    "Phone (digits only)": "<digits>",
+    "Address line 1": "<address>",
+    "City": "<city>",
+    "State": "<state>",
+    "Postal code": "<postcode>",
+    "Country": "<country>",
+    "Current employer": "<employer>",
+    "Current title": "<official title>",
+    "Employment dates": "<month year> to present",
+    "Degree": "<degree, institution, years, grade>",
+    "Languages": "<language - level>",
+    "Notice period": "<days>",
+    "Expected CTC (India)": "<your rule for home-country forms>",
+    "Expected salary (abroad)": "<your rule for forms abroad>"
+  },
+  "standard_answers": {
+    "Certifications": "<held / None>",
+    "Criminal conviction": "<answer>",
+    "Worked at or interviewed with this employer before": "<employers where the answer is known; otherwise: leave and report>",
+    "Legally eligible to work outside the home country": "<answer>",
+    "How did you hear about us": "<source>"
+  },
+  "domain_years": {
+    "<domain>": "<years>"
+  },
+  "rules": [
+    "Any question these facts do not answer: leave it, finish the rest, report the exact question and options. Never guess, never enter 0.",
+    "Never type a password, one-time code or e-signature; never create an account.",
+    "Consent ticks: only if this job's sheet says they are authorised.",
+    "Experience section: one row per real job. Delete rows the resume importer invents.",
+    "Skills: only skills printed on the uploaded resume."
+  ],
+  "review_expect": {
+    "Given name": ["<given name>"],
+    "Family name": ["<family name>"],
+    "Email": ["<email>"],
+    "Phone": ["<digits>"],
+    "City": ["<city>"],
+    "Employer": ["<employer>", "<short form>"],
+    "Title": ["<title>"],
+    "Degree school": ["<institution>"]
+  },
+  "review_forbid": ["<file name of an outdated resume>"],
+  "review_look": ["<certificate not held>", "<tool not used>", "<customer names an importer may list as employers>"]
+}
